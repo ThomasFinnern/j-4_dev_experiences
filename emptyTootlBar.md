@@ -1,9 +1,9 @@
 # Do not display "Option button" in toolbar
-The option button or the complete toolbar may not be needed in on the component form
+The option button or the otherwise empty toolbar may not be needed on the component form
 
 ![toolbar with buttton "Options" displayed](./images/DisplayButtonOption.png)
 
-Following parts of the code needed to be dsiabled
+Following parts of the code needed to be disabled
 
 ```php
 // Get the toolbar object instance
@@ -11,15 +11,16 @@ $toolbar = Toolbar::getInstance('toolbar');
 $toolbar->preferences('com_rsgallery2');
 ```
 
-Result see next section
+This results now in an empty grey toolbar
 
-# Avoid displaying not needed empty bar in component form
+# Avoid displaying empty grey toolbar in joomla component form
 
-Whe no button is activated following empty space appears on the component form
+When no button is activated following empty space appears on the component form
 
 ![toolbar with no buttton displayed](./images/EmptyDisplayToolbarButtons.png)
 
-There was no general switch in the joomla! 4 code (as far as i know 2020 february)
+There is no general switch in the joomla! 4 code to not display an empty toolbar (as far as i know 2020 february) In the backend template the Subheader html will always be inserted. Only if com_cpanel is active it is ommited
+
 On stackoverflow is a article called ["How to hide grey 'button bar' in administrator component view"][dda6871d]
 
   [dda6871d]: https://joomla.stackexchange.com/questions/23802/how-to-hide-grey-button-bar-in-administrator-component-view "Hide grey 'button bar'"
@@ -41,6 +42,11 @@ This css applies to following joomla 4 html
 
 ![subheader HTML of joomla! 4](./images/SubHeader.html.png)
 
+$cpanel     = $option === 'com_cpanel';
+
+
+
 ## Result:
 The grey  "button bar" is removed
+
 ![Grey "button bar" is removed](./images/NoGreyButtonsToolbar.png)
